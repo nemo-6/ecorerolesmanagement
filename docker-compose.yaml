@@ -1,7 +1,7 @@
-version: "3.8"
+version: "2.3.3"
 services:
   ecorerolemanagement:
-    image: ecoretag-latest
+    image: nemo642/alex-ecore
     container_name: ecorerolemanagement
     ports:
       - "8080:8080"

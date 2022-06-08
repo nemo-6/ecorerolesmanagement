@@ -21,7 +21,6 @@ public class MembershipService {
                         membership.getMemberId(),
                         membership.getTeamId()
                 );
-
         if(existing_membership.isEmpty()) {
             membershipRepository.insert(membership);
         }
@@ -31,4 +30,7 @@ public class MembershipService {
         return membershipRepository.findMembershipModelByRoleName(roleName);
     }
 
+    public List<MembershipModel> getAll() {
+        return this.membershipRepository.findAll();
+    }
 }

@@ -21,14 +21,17 @@ public class RoleService {
     }
 
     public void insert(RoleModel role) {
-        roleRepository.insert(role);
+        Optional<RoleModel> existing = roleRepository.findRoleModelByName(role.getName());
+        if(existing.isEmpty()){
+            roleRepository.insert(role);
+        }
     }
 
     public List<RoleModel> findDefaultRoles() {
         return roleRepository.findDefaultRoles();
     }
 
-    public Optional<MembershipModel> findRoleNameByMembership(String memberId, String teamId) {
-        return membershipRepository.findMembershipModelByTeamIdAndMemberId(teamId, memberId);
+    public List<MembershipModel> findRoleNameByMembership(String memberId, String teamId) {
+        return membershipRepository.findMembershipModelsByTeamIdAndMemberId(teamId, memberId);
     }
 }

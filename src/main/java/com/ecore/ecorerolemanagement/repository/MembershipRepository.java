@@ -12,7 +12,7 @@ public interface MembershipRepository extends MongoRepository<MembershipModel, S
 
     Optional<MembershipModel> findMembershipModelByRoleNameAndMemberIdAndTeamId(String roleName, String memberId, String teamId);
 
-    Optional<MembershipModel> findMembershipModelByTeamIdAndMemberId(String teamId, String memberId);
+    List<MembershipModel> findMembershipModelsByTeamIdAndMemberId(String teamId, String memberId);
 
     List<MembershipModel> findMembershipModelByRoleName(String roleName);
 
