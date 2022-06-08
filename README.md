@@ -7,15 +7,15 @@ Once running, the following endpoints are exposed on port 8080:
 - POST `/roles` 
   - Creates a new role.
 ```JSON 
-- {"name": <role name>}
+{"name": "[role name]"}
 ```
 - POST `/roles/assign` 
   - Assigns a role to a user. This only makes sense within the context of a team, so it must be passed too.
 ```JSON
 {
-  "memberId": <member id>,
-  "teamId": <team id>,
-  "roleName": <role name>
+  "memberId": "[member id]",
+  "teamId": "[team id]",
+  "roleName": "[role name]"
  }
  ```
 - GET `/roles`
@@ -33,9 +33,9 @@ Once running, the following endpoints are exposed on port 8080:
     - Creates a new membership, which is the same thing as assigning a role to a user within a team. This endpoint works in the same way as POST `/roles/assign`
 ```JSON
 {
-  "memberId": <member id>,
-  "teamId": <team id>,
-  "roleName": <role name>
+  "memberId": "[member id]",
+  "teamId": "[team id]",
+  "roleName": "[role name]"
  }
  ```
 
@@ -64,6 +64,7 @@ Plain models for all entities that would be manipulated by the service are creat
 - [2] Assign a Role to a Team Member of a Team (creating a Membership)
 - [3] Look up Memberships given a Role
 - [4] Look up the Role of a given Membership (uniquely identified by a Team Member Id + Team Id )
+
 [1], [2] and [4] were operations that fit under `/role` so they were placed in RoleController
 [3] fits under `/membership` so it was put in MembershipController. For ease of use, [2]Assign was
 made available in POST /memberships as well as in POST roles/assign
@@ -76,13 +77,17 @@ I tried to follow the example API given as closely as possible when naming endpo
 
 #### Build and run:
 Building and running were done using IntelliJ IDE.
+
 1- Install the dependencies and build the project using Maven
+
 2- Build the Docker image of the project using the Dockerfile
+
 3- Compose the docker container with docker-compose.yaml, which includes the mongo database
 
 #### Docker-only deploy
 1- Run the docker-compose.yaml file with docker-compose.
-  It will download the tag `nemo642/alex-ecore:1` as well as the mongo images used from docker hub and compose the application automatically
+
+It will download the tag `nemo642/alex-ecore:1` as well as the mongo images used from docker hub and compose the application automatically
 
 
 #### Suggestions for improvement in the Team and User services:
